@@ -2,6 +2,7 @@ const passport = require("passport");
 const GithubStrategy = require("passport-github2").Strategy;
 const session = require("express-session");
 const express = require("express");
+const dotenv = require("dotenv").config();
 const app = express();
 const exec = require("child_process").exec;
 app.use(express.static("public"));
