@@ -53,13 +53,6 @@ const middlewareAuth = (req, res, next) => {
     }
 }
 
-app.get("/", (req, res) => {
-    const html = `
-    <h1>Recon Tool</h1>
-    <a href="/auth/github">Login with GitHub</a>`
-    res.send(html);
-});
-
 app.get("/auth/github", 
     passport.authenticate('github', { scope: ['user:email'] 
 }));
