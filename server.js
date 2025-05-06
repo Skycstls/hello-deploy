@@ -8,13 +8,14 @@ const exec = require("child_process").exec;
 app.use(express.static("public"));
 const CLIENT_ID_GITHUB = process.env.CLIENT_ID_GITHUB;
 const CLIENT_SECRET_GITHUB = process.env.CLIENT_SECRET_GITHUB;
+const IP = process.env.IP || "localhost";
 console.log(`CLIENT_ID_GITHUB: ${CLIENT_ID_GITHUB}`);
 console.log(`CLIENT_SECRET_GITHUB: ${CLIENT_SECRET_GITHUB}`);
-
+console.log(`IP: ${IP}`);
 passport.use(new GithubStrategy({
     clientID: CLIENT_ID_GITHUB,
     clientSecret: CLIENT_SECRET_GITHUB,
-    callbackURL: "http://localhost:3000/auth/github/callback",
+    callbackURL: `http://${IP}:3000/auth/github/callback`,
 }, function (accessToken, refreshToken, profile, done) {
     console.log("Profile: ", profile);
     return done(null, profile);
